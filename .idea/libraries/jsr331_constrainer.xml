@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jsr331.constrainer">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/lib/constrainer/jsr331.constrainer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Desktop/lib/constrainer/jsr331.constrainer.jar!/" />
+    </SOURCES>
+  </library>
+</component>

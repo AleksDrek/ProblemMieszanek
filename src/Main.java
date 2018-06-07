@@ -1,15 +1,10 @@
 
 import Controller.Controller;
-import Model.Melt;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import javax.constraints.Problem;
-import javax.constraints.ProblemFactory;
-import javax.naming.ldap.Control;
 
 public class Main extends Application {
     Controller controller;

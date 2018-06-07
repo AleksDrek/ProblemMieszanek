@@ -7,75 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/choco" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/choco" />
-        </SOURCES>
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/choco" recursive="false" />
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/choco" recursive="false" type="SOURCES" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/constrainer" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/constrainer" />
-        </SOURCES>
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/constrainer" recursive="false" />
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/constrainer" recursive="false" type="SOURCES" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/jsetl" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/jsetl" />
-        </SOURCES>
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/jsetl" recursive="false" />
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/jsetl" recursive="false" type="SOURCES" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/linear" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/linear" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/logging" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://D:/Pobrane/org.jcp.jsr331.tck/lib/logging" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://D:/Pobrane/org.jcp.jsr331.tck/lib/jsr331.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://D:/Pobrane/org.jcp.jsr331.tck/lib/jsr331.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="jsr331" level="project" />
+    <orderEntry type="library" name="jsr331.constrainer" level="project" />
+    <orderEntry type="library" name="constrainer.light" level="project" />
+    <orderEntry type="library" name="log4j-1.2.15" level="project" />
+    <orderEntry type="library" name="commons-logging-1.1" level="project" />
+    <orderEntry type="library" name="commons-logging-api-1.1" level="project" />
   </component>
 </module>
