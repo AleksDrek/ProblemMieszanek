@@ -7,24 +7,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    Controller controller;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("View/sample.fxml"));
         Parent root = mainLoader.load();
-        controller = mainLoader.getController();
-        //Problem p = ProblemFactory.newProblem("Problem mieszanek");
+        Controller controller = mainLoader.getController();
 
         primaryStage.setTitle("Mieszanki");
         primaryStage.setScene(new Scene(root, 800, 500));
-//        controller.tabOfVariablesA.setVisible(false);
 
         primaryStage.show();
         controller.init();
     }
-
 
     public static void main(String[] args) {
         launch(args);

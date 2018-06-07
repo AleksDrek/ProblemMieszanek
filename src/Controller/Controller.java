@@ -1,8 +1,6 @@
 package Controller;
 
 import Model.Melt;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,90 +12,84 @@ import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
 
-
-
 public class Controller {
-    public TextField nInsert;
-    public TextField mInsert;
-    public Button firstDataButton;
-    public TextField massInsert;
-    public GridPane gridOfA;
-    public GridPane gridOfBMax;
+    public TextField materialsNumberTextField;
+    public TextField componentsNumberTextField;
+    public Button generateTextFields;
+    public TextField massNumberTextField;
+    public GridPane materialContentGrid;
+    public GridPane maximumContentGrid;
+    public GridPane minimumContentGrid;
+    public GridPane priceGrid;
 
-    private TextField [][] tabOfTextFieldsForA;
-    private TextField [] tabOfTextFieldsForBMax;
-    private TextField [] tabOfTextFieldsForBMin;
-    private TextField [] tabOfTextFieldsForP;
-    public GridPane gridOfP;
-    public GridPane gridOfBMini;
+
+    private TextField[][] materialsContentArray;
+    private TextField[] maximumContentArray;
+    private TextField[] minimumContentArray;
+    private TextField[] priceArray;
 
     private Melt melt;
-    public Button acceptTables;
+    public Button solveProblem;
 
-    public void acceptData(ActionEvent actionEvent)
-    {
-        if(nInsert.getText() == null || nInsert.getText().trim().isEmpty() || mInsert.getText() == null || mInsert.getText().trim().isEmpty() || massInsert.getText() == null || massInsert.getText().trim().isEmpty()) {
+    public void acceptData() {
+        if (materialsNumberTextField.getText() == null || materialsNumberTextField.getText().trim().isEmpty() || componentsNumberTextField.getText() == null || componentsNumberTextField.getText().trim().isEmpty() || massNumberTextField.getText() == null || massNumberTextField.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Nie podałeś wszystkich danych!");
             alert.showAndWait();
-        }
-        else{
-            int n = Integer.parseInt(nInsert.getText());
-            int m = Integer.parseInt(mInsert.getText());
-            double g = Double.parseDouble(massInsert.getText());
-            melt = new Melt(n,m,g);
-            tabOfTextFieldsForA = new TextField[n][m];
-            tabOfTextFieldsForBMax = new TextField[n];
-            tabOfTextFieldsForBMin = new TextField[n];
-            tabOfTextFieldsForP = new TextField[m];
+        } else {
+            int materialsNumber = Integer.parseInt(materialsNumberTextField.getText());
+            int componentsNumber = Integer.parseInt(componentsNumberTextField.getText());
+            double massNumber = Double.parseDouble(massNumberTextField.getText());
+            melt = new Melt(materialsNumber, componentsNumber, massNumber);
+            materialsContentArray = new TextField[materialsNumber][componentsNumber];
+            maximumContentArray = new TextField[materialsNumber];
+            minimumContentArray = new TextField[materialsNumber];
+            priceArray = new TextField[componentsNumber];
 
 
-            for(int i=0; i<n; i++){
-                for(int j=0;j<m;j++) {
-                    tabOfTextFieldsForA[i][j] = new TextField();
-                    tabOfTextFieldsForA[i][j].setAlignment(Pos.CENTER);
-                    tabOfTextFieldsForA[i][j].setMaxSize(40,30);
+            for (int i = 0; i < materialsNumber; i++) {
+                for (int j = 0; j < componentsNumber; j++) {
+                    materialsContentArray[i][j] = new TextField();
+                    materialsContentArray[i][j].setAlignment(Pos.CENTER);
+                    materialsContentArray[i][j].setMaxSize(40, 30);
 
                     //add them to the GridPane
-                    gridOfA.add(tabOfTextFieldsForA[i][j], i, j); //  (child, columnIndex, rowIndex)
+                    materialContentGrid.add(materialsContentArray[i][j], i, j); //  (child, columnIndex, rowIndex)
                 }
             }
 
-            gridOfA.setVisible(true);
+            materialContentGrid.setVisible(true);
 
 
-            for(int i=0; i<n; i++){
-                tabOfTextFieldsForBMax[i] = new TextField();
-                tabOfTextFieldsForBMax[i].setAlignment(Pos.CENTER);
-                tabOfTextFieldsForBMax[i].setMaxSize(40,30);
+            for (int i = 0; i < materialsNumber; i++) {
+                maximumContentArray[i] = new TextField();
+                maximumContentArray[i].setAlignment(Pos.CENTER);
+                maximumContentArray[i].setMaxSize(40, 30);
 
-                tabOfTextFieldsForBMin[i] = new TextField();
-                tabOfTextFieldsForBMin[i].setAlignment(Pos.CENTER);
-                tabOfTextFieldsForBMin[i].setMaxSize(40,30);
+                minimumContentArray[i] = new TextField();
+                minimumContentArray[i].setAlignment(Pos.CENTER);
+                minimumContentArray[i].setMaxSize(40, 30);
 
 
-                    //add them to the GridPane
-                gridOfBMax.add(tabOfTextFieldsForBMax[i], i,0); //  (child, columnIndex, rowIndex)
-                gridOfBMini.add(tabOfTextFieldsForBMin[i], i,0);
+                //add them to the GridPane
+                maximumContentGrid.add(maximumContentArray[i], i, 0); //  (child, columnIndex, rowIndex)
+                minimumContentGrid.add(minimumContentArray[i], i, 0);
             }
 
-            for(int i =0;i<m;i++){
-                tabOfTextFieldsForP[i] = new TextField();
-                tabOfTextFieldsForP[i].setAlignment(Pos.CENTER);
-                tabOfTextFieldsForP[i].setMaxSize(40,30);
+            for (int i = 0; i < componentsNumber; i++) {
+                priceArray[i] = new TextField();
+                priceArray[i].setAlignment(Pos.CENTER);
+                priceArray[i].setMaxSize(40, 30);
 
-                gridOfP.add(tabOfTextFieldsForP[i],i,0);
+                priceGrid.add(priceArray[i], i, 0);
             }
-
-            //System.out.println(n +" + "+m);
         }
     }
 
-    public void acceptDataFromTables(ActionEvent actionEvent)
-    {
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForA, melt.matrixOfContent, melt.numberOfMaterials, melt.numberOfComponents);
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForBMax, melt.contentOfComponentInMixMax, melt.numberOfMaterials);
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForBMin, melt.contentOfComponentInMixMin, melt.numberOfMaterials);
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForP, melt.priceOfMaterials, melt.numberOfComponents);
+    public void acceptDataFromTables() {
+        rewriteDataFromTextFieldToTable(materialsContentArray, melt.matrixOfContent, melt.numberOfMaterials, melt.numberOfComponents);
+        rewriteDataFromTextFieldToTable(maximumContentArray, melt.contentOfComponentInMixMax, melt.numberOfMaterials);
+        rewriteDataFromTextFieldToTable(minimumContentArray, melt.contentOfComponentInMixMin, melt.numberOfMaterials);
+        rewriteDataFromTextFieldToTable(priceArray, melt.priceOfMaterials, melt.numberOfComponents);
         melt.define();
         melt.solve();
 
@@ -105,54 +97,29 @@ public class Controller {
         myDialog.initModality(Modality.WINDOW_MODAL);
 
         Button okButton = new Button("Ok, dziękuję");
-        okButton.setOnAction(new EventHandler<ActionEvent>(){
-
-            @Override
-            public void handle(ActionEvent arg0) {
-                myDialog.close();
-            }
-
-        });
+        okButton.setOnAction(arg0 -> myDialog.close());
 
         Scene myDialogScene = new Scene(VBoxBuilder.create()
-                .children(new Text(melt.getRozwiazanie()), okButton)
+                .children(new Text(melt.getSolution()), okButton)
                 .alignment(Pos.CENTER)
                 .padding(new Insets(10))
                 .build());
 
         myDialog.setScene(myDialogScene);
         myDialog.show();
-
-
-
     }
 
-    public double [][] rewriteDataFromTextFieldToTable(TextField [][]tabText, double [][]matrix, int size1, int size2)
-    {
-        for(int i =0;i<size1;i++)
-            for(int j=0;j<size2;j++)
-                matrix[i][j]=Double.parseDouble(tabText[i][j].getText());
-
-        return matrix;
+    private void rewriteDataFromTextFieldToTable(TextField[][] tabText, int[][] matrix, int size1, int size2) {
+        for (int i = 0; i < size1; i++)
+            for (int j = 0; j < size2; j++)
+                matrix[i][j] = Integer.parseInt(tabText[i][j].getText());
     }
 
-    public double []rewriteDataFromTextFieldToTable(TextField []tabText, double []vect, int size){
-        for(int i=0;i<size;i++)
-            vect[i] = Double.parseDouble(tabText[i].getText());
-
-        return vect;
-    }
-
-    public int []rewriteDataFromTextFieldToTable(TextField []tabText, int []vect, int size){
-        for(int i=0;i<size;i++)
+    private void rewriteDataFromTextFieldToTable(TextField[] tabText, int[] vect, int size) {
+        for (int i = 0; i < size; i++)
             vect[i] = Integer.parseInt(tabText[i].getText());
-
-        return vect;
     }
 
-    public void init()
-    {
-        //tabOfVariablesA.setVisible(false);
-
+    public void init() {
     }
 }
