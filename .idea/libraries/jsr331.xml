@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="jsr331">
     <CLASSES>
-      <root url="jar://D:/Pobrane/org.jcp.jsr331.tck/lib/jsr331.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/lib/jsr331.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://D:/Pobrane/org.jcp.jsr331.tck/lib/jsr331.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/lib/jsr331.jar!/" />
     </SOURCES>
   </library>
 </component>

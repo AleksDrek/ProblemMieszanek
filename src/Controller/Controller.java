@@ -24,14 +24,14 @@ public class Controller {
     public GridPane gridOfA;
     public GridPane gridOfBMax;
 
-    public TextField [][] tabOfTextFieldsForA;
-    public TextField [] tabOfTextFieldsForBMax;
-    public TextField [] tabOfTextFieldsForBMin;
-    public TextField [] tabOfTextFieldsForP;
+    private TextField [][] tabOfTextFieldsForA;
+    private TextField [] tabOfTextFieldsForBMax;
+    private TextField [] tabOfTextFieldsForBMin;
+    private TextField [] tabOfTextFieldsForP;
     public GridPane gridOfP;
     public GridPane gridOfBMini;
 
-    public Melt mieszanka;
+    private Melt melt;
     public Button acceptTables;
 
     public void acceptData(ActionEvent actionEvent)
@@ -44,7 +44,7 @@ public class Controller {
             int n = Integer.parseInt(nInsert.getText());
             int m = Integer.parseInt(mInsert.getText());
             double g = Double.parseDouble(massInsert.getText());
-            mieszanka = new Melt(n,m,g);
+            melt = new Melt(n,m,g);
             tabOfTextFieldsForA = new TextField[n][m];
             tabOfTextFieldsForBMax = new TextField[n];
             tabOfTextFieldsForBMin = new TextField[n];
@@ -94,12 +94,12 @@ public class Controller {
 
     public void acceptDataFromTables(ActionEvent actionEvent)
     {
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForA,mieszanka.matrixOfContent,mieszanka.numberOfMaterials, mieszanka.numberOfComponents);
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForBMax, mieszanka.contentOfComponentInMixMax, mieszanka.numberOfMaterials);
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForBMin, mieszanka.contentOfComponentInMixMin, mieszanka.numberOfMaterials);
-        rewriteDataFromTextFieldToTable(tabOfTextFieldsForP, mieszanka.priceOfMaterials, mieszanka.numberOfComponents);
-        mieszanka.define();
-        mieszanka.solve();
+        rewriteDataFromTextFieldToTable(tabOfTextFieldsForA, melt.matrixOfContent, melt.numberOfMaterials, melt.numberOfComponents);
+        rewriteDataFromTextFieldToTable(tabOfTextFieldsForBMax, melt.contentOfComponentInMixMax, melt.numberOfMaterials);
+        rewriteDataFromTextFieldToTable(tabOfTextFieldsForBMin, melt.contentOfComponentInMixMin, melt.numberOfMaterials);
+        rewriteDataFromTextFieldToTable(tabOfTextFieldsForP, melt.priceOfMaterials, melt.numberOfComponents);
+        melt.define();
+        melt.solve();
 
         final Stage myDialog = new Stage();
         myDialog.initModality(Modality.WINDOW_MODAL);
@@ -115,7 +115,7 @@ public class Controller {
         });
 
         Scene myDialogScene = new Scene(VBoxBuilder.create()
-                .children(new Text(mieszanka.getRozwiazanie()), okButton)
+                .children(new Text(melt.getRozwiazanie()), okButton)
                 .alignment(Pos.CENTER)
                 .padding(new Insets(10))
                 .build());
