@@ -16,7 +16,7 @@ public class Main extends Application {
         Controller controller = mainLoader.getController();
 
         primaryStage.setTitle("Mieszanki");
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root, 850, 550));
 
         primaryStage.show();
         controller.init();

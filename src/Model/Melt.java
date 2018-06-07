@@ -80,8 +80,8 @@ public class Melt {
             this.solution = "Koszt: " + solution.getValue("cost") + "\n";
             for (int i = 0; i < numberOfComponents; i++) {
                 tempSolution = this.solution;
-                System.out.println("Component nr " + i + ": " + solution.getValue("x-" + i));
-                this.solution = tempSolution + "Składnik nr " + i + ": " + solution.getValue("x-" + i) + "\n";
+                System.out.println("Component nr " + (i + 1) + ": " + solution.getValue("x-" + i));
+                this.solution = tempSolution + "Składnik nr " + (i + 1) + ": " + solution.getValue("x-" + i) + "\n";
             }
             System.out.println();
 

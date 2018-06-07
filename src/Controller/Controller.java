@@ -50,7 +50,7 @@ public class Controller {
                 for (int j = 0; j < componentsNumber; j++) {
                     materialsContentArray[i][j] = new TextField();
                     materialsContentArray[i][j].setAlignment(Pos.CENTER);
-                    materialsContentArray[i][j].setMaxSize(40, 30);
+                    materialsContentArray[i][j].setMaxSize(60, 30);
 
                     //add them to the GridPane
                     materialContentGrid.add(materialsContentArray[i][j], i, j); //  (child, columnIndex, rowIndex)
@@ -63,11 +63,11 @@ public class Controller {
             for (int i = 0; i < materialsNumber; i++) {
                 maximumContentArray[i] = new TextField();
                 maximumContentArray[i].setAlignment(Pos.CENTER);
-                maximumContentArray[i].setMaxSize(40, 30);
+                maximumContentArray[i].setMaxSize(60, 30);
 
                 minimumContentArray[i] = new TextField();
                 minimumContentArray[i].setAlignment(Pos.CENTER);
-                minimumContentArray[i].setMaxSize(40, 30);
+                minimumContentArray[i].setMaxSize(60, 30);
 
 
                 //add them to the GridPane
@@ -78,7 +78,7 @@ public class Controller {
             for (int i = 0; i < componentsNumber; i++) {
                 priceArray[i] = new TextField();
                 priceArray[i].setAlignment(Pos.CENTER);
-                priceArray[i].setMaxSize(40, 30);
+                priceArray[i].setMaxSize(60, 30);
 
                 priceGrid.add(priceArray[i], i, 0);
             }
@@ -115,9 +115,9 @@ public class Controller {
                 matrix[i][j] = Integer.parseInt(tabText[i][j].getText());
     }
 
-    private void rewriteDataFromTextFieldToTable(TextField[] tabText, int[] vect, int size) {
+    private void rewriteDataFromTextFieldToTable(TextField[] tabText, int[] vector, int size) {
         for (int i = 0; i < size; i++)
-            vect[i] = Integer.parseInt(tabText[i].getText());
+            vector[i] = Integer.parseInt(tabText[i].getText());
     }
 
     public void init() {
